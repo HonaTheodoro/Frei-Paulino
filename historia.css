@@ -1,0 +1,2986 @@
+/* ============================================================
+   CENTRO VOCACIONAL FREI PAULINO
+   HISTÓRIA
+============================================================ */
+
+/* ============================================================
+   VARIÁVEIS
+============================================================ */
+
+:root {
+  --primary-color: #061b55;
+
+  --azul: #173c8d;
+  --azul-claro: #2f66d0;
+
+  --amarelo: #ffd54a;
+  --laranja: #f58220;
+  --vermelho: #e11111;
+
+  --verde: #12c02d;
+  --verde-frei: #356b48;
+  --verde-frei-dark: #234c32;
+  --verde-frei-light: #e8f0e8;
+
+  --branco: #ffffff;
+  --preto: #111111;
+  --off-white: #f8f9f5;
+
+  --texto: #2c3e50;
+  --cinza: #6b746d;
+  --cinza-claro: #e7ebe5;
+
+  --linha: rgba(53, 107, 72, 0.18);
+
+  --sombra: 0 10px 35px rgba(0, 0, 0, 0.08);
+  --sombra-media: 0 30px 80px rgba(20, 40, 28, 0.13);
+
+  --transicao: 0.35s ease;
+}
+
+/* ============================================================
+   RESET
+============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: var(--off-white);
+  color: var(--texto);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ============================================================
+   SELEÇÃO
+============================================================ */
+
+::selection {
+  background: var(--verde-frei);
+  color: var(--branco);
+}
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ecefec;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--verde-frei);
+  border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--laranja);
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.historia-header {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 84px;
+  padding: 0 clamp(24px, 5vw, 80px);
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  transition:
+    height 0.4s ease,
+    background 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.historia-header.scrolled {
+  height: 70px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 10px 40px rgba(20, 40, 28, 0.08);
+}
+
+/* ============================================================
+   6. HEADER CONTAINER
+============================================================ */
+
+.header-container {
+  width: min(1240px, calc(100% - 80px));
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ============================================================
+   7. LOGO
+============================================================ */
+
+.logo-link {
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  z-index: 5;
+}
+
+.logo {
+  width: 74px;
+  height: 74px;
+
+  object-fit: contain;
+
+  transition: transform var(--transicao);
+}
+
+.logo-link:hover .logo {
+  transform: scale(1.04);
+}
+
+/* ============================================================
+   8. MENU DESKTOP
+============================================================ */
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+}
+
+.main-nav a {
+  position: relative;
+  padding: 10px 0;
+  color: var(--azul-claro);
+  font-size: 14px;
+  font-weight: 500;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Linha inferior animada */
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 0;
+  height: 2px;
+  background: var(--laranja);
+  transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  width: 100%;
+}
+
+.main-nav a:hover {
+  color: var(--laranja);
+}
+
+/* ============================================================
+   8. BOTÃO ÁREA DO APRENDIZ
+============================================================ */
+
+.main-nav .nav-highlight {
+  padding: 12px 20px;
+  border-radius: 50px;
+  color: var(--branco);
+  background: var(--azul);
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.main-nav .nav-highlight::after {
+  display: none;
+}
+
+.main-nav .nav-highlight:hover {
+  color: var(--branco);
+  background: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(53, 107, 72, 0.2);
+}
+
+/* ============================================================
+   10. MENU MOBILE
+============================================================ */
+
+.menu-toggle {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  position: relative;
+  z-index: 1100;
+}
+
+.menu-toggle span {
+  display: block;
+
+  width: 24px;
+  height: 2px;
+
+  margin: 5px auto;
+
+  background: var(--verde-frei);
+
+  transition: 0.3s ease;
+}
+
+/* ============================================================
+   11. MENU MOBILE ABERTO
+============================================================ */
+
+.mobile-menu {
+  display: none;
+
+  position: fixed;
+
+  top: 0;
+  right: 0;
+
+  width: min(360px, 85%);
+  height: 100vh;
+
+  padding: 110px 35px 40px;
+
+  background: var(--off-white);
+
+  box-shadow: -15px 0 50px rgba(0, 0, 0, 0.12);
+
+  z-index: 1050;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.mobile-menu a {
+  display: block;
+
+  padding: 15px 10px;
+
+  color: var(--verde-frei);
+
+  font-size: 16px;
+  font-weight: 500;
+
+  border-bottom: 1px solid var(--linha);
+
+  transition:
+    color var(--transicao),
+    padding-left var(--transicao);
+}
+
+.mobile-menu a:hover {
+  color: var(--laranja);
+  padding-left: 18px;
+}
+
+.mobile-menu a.active {
+  color: var(--verde-frei);
+  font-weight: 700;
+}
+
+/* ============================================================
+   12. TAGS DE SEÇÃO
+============================================================ */
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  color: var(--laranja);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.section-tag::before {
+  content: "";
+  width: 32px;
+  height: 2px;
+  background: var(--amarelo);
+}
+
+.section-tag.light {
+  color: var(--amarelo);
+}
+
+/* ============================================================
+   13. HERO DA HISTÓRIA
+============================================================ */
+
+.history-hero {
+  min-height: 100vh;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  padding: 150px clamp(30px, 8vw, 120px) 100px;
+
+  background: var(--off-white);
+}
+
+/* ============================================================
+   14. GRID DO HERO
+============================================================ */
+
+.hero-grid {
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0.55;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(rgba(53, 107, 72, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(53, 107, 72, 0.055) 1px, transparent 1px);
+
+  background-size: 34px 34px;
+}
+
+/* ============================================================
+   15. CÍRCULOS DECORATIVOS
+============================================================ */
+
+.hero-circle {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.hero-circle-one {
+  width: 620px;
+  height: 620px;
+
+  right: -230px;
+  top: 4%;
+
+  border: 1px solid rgba(53, 107, 72, 0.18);
+}
+
+.hero-circle-two {
+  width: 300px;
+  height: 300px;
+
+  right: 140px;
+  top: 35%;
+
+  background: rgba(216, 242, 77, 0.18);
+}
+
+/* ============================================================
+   16. CONTEÚDO DO HERO
+============================================================ */
+
+.hero-content {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(850px, 100%);
+}
+
+.hero-small-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 30px;
+  color: var(--primary-color);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.label-line {
+  width: 44px;
+  height: 2px;
+  flex-shrink: 0;
+  background: var(--primary-color);
+}
+
+/* ============================================================
+   TÍTULO DO HERO
+============================================================ */
+
+.hero-content h1 {
+  max-width: 900px;
+  color: var(--laranja);
+  font-size: clamp(4.5rem, 10vw, 9rem);
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: -0.075em;
+}
+
+.hero-content h1 span {
+  display: block;
+  margin-top: 22px;
+  color: var(--azul-claro);
+  font-family: "Playfair Display", serif;
+  font-size: 0.53em;
+  font-style: italic;
+  letter-spacing: -0.04em;
+}
+
+/* ============================================================
+   DESCRIÇÃO DO HERO
+============================================================ */
+
+.hero-description {
+  max-width: 620px;
+  margin-top: 35px;
+  color: var(--cinza);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.8;
+}
+
+/* ============================================================
+   19. INDICADOR DE SCROLL
+============================================================ */
+
+.hero-scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 60px;
+  color: var(--verde-frei);
+  cursor: pointer;
+}
+
+.scroll-arrow {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-arrow span {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--verde-frei);
+  border-bottom: 2px solid var(--verde-frei);
+  transform: rotate(45deg) translate(-2px, -2px);
+  animation: scrollDown 1.8s infinite;
+}
+
+@keyframes scrollDown {
+  0%,
+  100% {
+    transform: rotate(45deg) translate(-2px, -2px);
+  }
+
+  50% {
+    transform: rotate(45deg) translate(3px, 3px);
+  }
+}
+
+.scroll-text {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================================
+   20. BALÃO INFORMATIVO
+============================================================ */
+
+.hero-info-bubble {
+  position: absolute;
+  right: 11%;
+  bottom: 14%;
+  width: 260px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(53, 107, 72, 0.15);
+  border-radius: 20px;
+  box-shadow: var(--sombra);
+  backdrop-filter: blur(12px);
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(15px);
+  transition:
+    opacity var(--transicao),
+    transform var(--transicao);
+}
+
+.history-hero:hover .hero-info-bubble {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bubble-small {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--laranja);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.hero-info-bubble p {
+  color: var(--texto);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   21. PALAVRA LATERAL
+============================================================ */
+
+.hero-side-word {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  color: rgba(53, 107, 72, 0.08);
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  pointer-events: none;
+}
+
+/* ============================================================
+   22. INTRODUÇÃO
+============================================================ */
+
+.history-introduction {
+  position: relative;
+  padding: 120px 8%;
+  background: var(--branco);
+}
+
+.intro-container {
+  width: min(1200px, 100%);
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr) 300px;
+  gap: 55px;
+  align-items: start;
+}
+
+/* ============================================================
+   23. NÚMERO DA INTRODUÇÃO
+============================================================ */
+
+.intro-number {
+  padding-top: 8px;
+  color: var(--verde-frei);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.intro-number::before {
+  content: "";
+  display: block;
+  width: 35px;
+  height: 2px;
+  margin-bottom: 12px;
+  background: var(--amarelo);
+}
+
+/* ============================================================
+   24. CONTEÚDO DA INTRODUÇÃO
+============================================================ */
+
+.intro-content {
+  max-width: 700px;
+}
+
+.intro-content h2 {
+  margin-bottom: 30px;
+  color: var(--azul-claro);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.intro-text {
+  display: grid;
+  gap: 18px;
+  color: var(--cinza);
+  font-size: 16px;
+}
+
+/* ============================================================
+   25. CITAÇÃO
+============================================================ */
+
+.intro-side {
+  padding-top: 45px;
+}
+
+.intro-quote {
+  position: relative;
+  padding: 30px;
+  border-left: 2px solid var(--verde-frei);
+  background: var(--verde-frei-light);
+}
+
+.quote-mark {
+  position: absolute;
+  top: -25px;
+  left: 20px;
+  color: var(--verde);
+  font-family: "Playfair Display", serif;
+  font-size: 70px;
+  line-height: 1;
+}
+
+.quote-mark-name {
+  position: absolute;
+  bottom: -35px;
+  right: 20px;
+  color: var(--verde);
+  font-family: "Playfair Display", serif;
+  font-size: 21px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.intro-quote p {
+  color: var(--verde-frei);
+  font-family: "Playfair Display", serif;
+  font-size: 21px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   26. SEÇÃO DA LINHA DO TEMPO
+============================================================ */
+
+.timeline-section {
+  position: relative;
+
+  padding: 140px 6% 160px;
+
+  background: var(--off-white);
+}
+
+/* ============================================================
+   27. CABEÇALHO DA LINHA DO TEMPO
+============================================================ */
+
+.timeline-heading {
+  width: min(800px, 100%);
+  margin: 0 auto 120px;
+  text-align: center;
+}
+
+.timeline-heading h2 {
+  margin-bottom: 25px;
+  color: var(--azul);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.timeline-heading p {
+  max-width: 500px;
+  margin: 0 auto;
+  color: var(--cinza);
+  font-size: 15px;
+}
+
+/* ============================================================
+   28. TIMELINE
+============================================================ */
+
+.timeline {
+  position: relative;
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+/* ============================================================
+   29. LINHA CENTRAL
+============================================================ */
+
+.timeline-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: rgba(53, 107, 72, 0.13);
+  overflow: hidden;
+}
+
+.timeline-line-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: var(--primary-color);
+  transition: height 0.2s linear;
+}
+
+/* ============================================================
+   30. ITEM DA TIMELINE
+============================================================ */
+
+.timeline-item {
+  position: relative;
+
+  width: 50%;
+
+  padding-bottom: 130px;
+}
+
+.timeline-left {
+  padding-right: 80px;
+
+  text-align: right;
+}
+
+.timeline-right {
+  margin-left: 50%;
+
+  padding-left: 80px;
+}
+
+/* ============================================================
+   31. ANO
+============================================================ */
+
+.timeline-year {
+  top: 10px;
+  color: var(--primary-color);
+  font-size: clamp(0.5rem, 3vw, 3rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  z-index: 0;
+}
+
+.timeline-left .timeline-year {
+  right: 280px;
+  transform: translateX(0);
+}
+
+.timeline-right .timeline-year {
+  left: 280px;
+  transform: translateX(0);
+}
+
+/* ============================================================
+   32. PONTO CENTRAL
+============================================================ */
+
+.timeline-dot {
+  position: absolute;
+  top: 5px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--off-white);
+  border: 2px solid var(--primary-color);
+  z-index: 5;
+}
+
+.timeline-left .timeline-dot {
+  right: -11px;
+}
+
+.timeline-right .timeline-dot {
+  left: -11px;
+}
+
+.timeline-dot span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  transition: transform var(--transicao);
+}
+
+.timeline-item:hover .timeline-dot span {
+  transform: scale(1.7);
+}
+
+/* ============================================================
+   33. CONTEÚDO DOS EVENTOS
+============================================================ */
+
+.timeline-content {
+  position: relative;
+  z-index: 2;
+  padding: 35px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(53, 107, 72, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 10px 35px rgba(20, 40, 28, 0.04);
+  transition:
+    transform var(--transicao),
+    box-shadow var(--transicao);
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra);
+}
+
+/* ============================================================
+   34. LABEL DO EVENTO
+============================================================ */
+
+.timeline-label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--laranja);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.timeline-content h3 {
+  margin-bottom: 18px;
+  color: var(--azul-claro);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.timeline-content p {
+  margin-bottom: 15px;
+  color: var(--cinza);
+  font-size: 15px;
+}
+
+/* ============================================================
+   35. IMAGENS DA TIMELINE
+============================================================ */
+
+.timeline-image {
+  margin-top: 30px;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  background: var(--cinza-claro);
+}
+
+.timeline-image img {
+  width: 100%;
+  height: 280px;
+
+  object-fit: cover;
+
+  transition: transform 0.6s ease;
+}
+
+.timeline-content:hover .timeline-image img {
+  transform: scale(1.03);
+}
+
+.image-caption {
+  display: block;
+
+  padding: 12px 15px;
+
+  color: var(--cinza);
+
+  background: var(--branco);
+
+  font-size: 11px;
+
+  text-align: left;
+}
+
+/* ============================================================
+   36. GALERIA
+============================================================ */
+
+.timeline-gallery {
+  display: grid;
+
+  grid-template-columns: 1.4fr 0.8fr;
+
+  gap: 10px;
+
+  margin-top: 30px;
+}
+
+.timeline-gallery img {
+  width: 100%;
+  height: 280px;
+
+  object-fit: cover;
+
+  border-radius: 14px;
+}
+
+.timeline-gallery .gallery-small img {
+  height: 280px;
+}
+
+/* ============================================================
+   37. IMAGEM LARGA
+============================================================ */
+
+.timeline-image-wide img {
+  height: 360px;
+}
+
+/* ============================================================
+   POLAROIDS — MEMÓRIAS DA LINHA DO TEMPO
+============================================================ */
+
+.timeline-item {
+  position: relative;
+}
+
+/* ============================================================
+   ÁREA DAS POLAROIDS
+============================================================ */
+
+.timeline-polaroids {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 350px;
+  height: 300px;
+  display: block;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ============================================================
+   POSIÇÃO DAS POLAROIDS
+============================================================ */
+
+.timeline-left .timeline-polaroids {
+  left: calc(100% + 35px);
+}
+
+.timeline-right .timeline-polaroids {
+  right: calc(100% + 35px);
+}
+
+/* ============================================================
+   POLAROID
+============================================================ */
+
+.polaroid {
+  position: absolute;
+  width: 195px;
+  padding: 13px 13px 23px;
+  background: #ffffff;
+  border-radius: 2px;
+  box-shadow:
+    0 10px 22px rgba(30, 50, 38, 0.13),
+    0 3px 7px rgba(30, 50, 38, 0.08);
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+  pointer-events: auto;
+}
+
+/* ============================================================
+   FOTO
+============================================================ */
+
+.polaroid-photo {
+  width: 100%;
+  height: 170px;
+  overflow: hidden;
+  background: #e8eee7;
+}
+
+.polaroid-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+/* ============================================================
+   LEGENDA
+============================================================ */
+
+.polaroid span {
+  display: block;
+  margin-top: 12px;
+  padding: 0 4px;
+  font-family: "Playfair Display", serif;
+  font-size: 0.86rem;
+  line-height: 1.3;
+  color: #354b3d;
+  text-align: center;
+}
+
+/* ============================================================
+   PRIMEIRA POLAROID
+============================================================ */
+
+.polaroid-one {
+  top: 10px;
+  left: 5px;
+  transform: rotate(-6deg);
+}
+
+/* ============================================================
+   SEGUNDA POLAROID
+============================================================ */
+
+.polaroid-two {
+  right: 5px;
+  bottom: 5px;
+  transform: rotate(5deg);
+}
+
+/* ============================================================
+   HOVER
+============================================================ */
+
+.polaroid-one:hover {
+  transform: rotate(-3deg) translateY(-8px) scale(1.03);
+  box-shadow:
+    0 16px 30px rgba(30, 50, 38, 0.19),
+    0 4px 9px rgba(30, 50, 38, 0.1);
+  z-index: 10;
+}
+
+.polaroid-two:hover {
+  transform: rotate(2deg) translateY(-8px) scale(1.03);
+  box-shadow:
+    0 16px 30px rgba(30, 50, 38, 0.19),
+    0 4px 9px rgba(30, 50, 38, 0.1);
+  z-index: 10;
+}
+
+.polaroid:hover img {
+  transform: scale(1.06);
+}
+
+/* ============================================================
+   TELAS GRANDES
+============================================================ */
+
+@media (min-width: 1400px) {
+  .timeline-polaroids {
+    width: 420px;
+    height: 350px;
+  }
+
+  .polaroid {
+    width: 215px;
+    padding: 14px 14px 24px;
+  }
+
+  .polaroid-photo {
+    height: 180px;
+  }
+
+  .polaroid span {
+    font-size: 0.9rem;
+  }
+
+  .timeline-left .timeline-polaroids {
+    left: calc(100% + 45px);
+  }
+
+  .timeline-right .timeline-polaroids {
+    right: calc(100% + 45px);
+  }
+}
+
+/* ============================================================
+   NOTEBOOK / DESKTOP MENOR
+============================================================ */
+
+@media (min-width: 1100px) and (max-width: 1399px) {
+  .timeline-polaroids {
+    width: 350px;
+    height: 310px;
+  }
+
+  .polaroid {
+    width: 180px;
+    padding: 12px 12px 21px;
+  }
+
+  .polaroid-photo {
+    height: 155px;
+  }
+
+  .timeline-left .timeline-polaroids {
+    left: calc(100% + 20px);
+  }
+
+  .timeline-right .timeline-polaroids {
+    right: calc(100% + 20px);
+  }
+}
+
+/* ============================================================
+   TABLETS
+============================================================ */
+
+@media (min-width: 769px) and (max-width: 1099px) {
+  .timeline-polaroids {
+    width: 280px;
+    height: 245px;
+  }
+
+  .polaroid {
+    width: 145px;
+    padding: 9px 9px 16px;
+  }
+
+  .polaroid-photo {
+    height: 120px;
+  }
+
+  .polaroid span {
+    font-size: 0.7rem;
+  }
+
+  .timeline-left .timeline-polaroids {
+    left: calc(100% + 12px);
+  }
+
+  .timeline-right .timeline-polaroids {
+    right: calc(100% + 12px);
+  }
+}
+
+/* ============================================================
+   TABLETS PEQUENOS
+============================================================ */
+
+@media (max-width: 850px) {
+  .timeline-polaroids {
+    width: 240px;
+    height: 215px;
+  }
+
+  .polaroid {
+    width: 130px;
+    padding: 8px 8px 15px;
+  }
+
+  .polaroid-photo {
+    height: 108px;
+  }
+
+  .polaroid span {
+    font-size: 0.66rem;
+  }
+}
+
+/* ============================================================
+   CELULARES
+   Só aqui elas descem para baixo do card.
+============================================================ */
+
+@media (max-width: 700px) {
+  .timeline-polaroids {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    transform: none;
+    width: 100%;
+    height: 250px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .timeline-left .timeline-polaroids,
+  .timeline-right .timeline-polaroids {
+    left: auto;
+    right: auto;
+  }
+
+  .polaroid {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 150px;
+    padding: 10px 10px 18px;
+  }
+
+  .polaroid-one {
+    transform: rotate(-5deg);
+    margin-right: -8px;
+  }
+
+  .polaroid-two {
+    transform: rotate(5deg);
+    margin-left: -8px;
+  }
+
+  .polaroid-photo {
+    height: 125px;
+  }
+
+  .polaroid span {
+    font-size: 0.75rem;
+  }
+}
+
+/* ============================================================
+   CELULARES PEQUENOS
+============================================================ */
+
+@media (max-width: 430px) {
+  .timeline-polaroids {
+    height: 230px;
+    margin-top: 35px;
+  }
+
+  .polaroid {
+    width: 135px;
+    padding: 9px 9px 16px;
+  }
+
+  .polaroid-photo {
+    height: 110px;
+  }
+
+  .polaroid span {
+    font-size: 0.69rem;
+  }
+}
+
+/* ============================================================
+   CELULARES MUITO PEQUENOS
+============================================================ */
+
+@media (max-width: 360px) {
+  .timeline-polaroids {
+    gap: 0;
+  }
+
+  .polaroid {
+    width: 120px;
+  }
+
+  .polaroid-photo {
+    height: 98px;
+  }
+}
+
+/* ============================================================
+   38. FRASE DE PAUSA
+============================================================ */
+
+.timeline-break {
+  width: 100%;
+  padding: 80px 10%;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+}
+
+.break-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(53, 107, 72, 0.18);
+}
+
+.timeline-break p {
+  max-width: 480px;
+  color: var(--azul);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.timeline-break strong {
+  color: var(--laranja);
+  font-weight: 500;
+}
+
+/* ============================================================
+   39. CARD EXTRA
+============================================================ */
+
+.timeline-card {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  margin-top: 30px;
+
+  padding: 20px;
+
+  border-radius: 16px;
+
+  background: var(--verde-frei-light);
+}
+
+.timeline-card-icon {
+  width: 45px;
+  height: 45px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  color: var(--branco);
+
+  background: var(--verde-frei);
+
+  font-size: 24px;
+}
+
+.timeline-card strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: var(--verde-frei);
+}
+
+.timeline-card span {
+  display: block;
+
+  color: var(--cinza);
+
+  font-size: 12px;
+}
+
+/* ============================================================
+   40. ANIMAÇÃO REVEAL
+============================================================ */
+
+.reveal {
+  opacity: 1;
+
+  transform: translateY(0);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+/*
+   Caso o JavaScript adicione a classe "hidden",
+   o elemento fica preparado para aparecer ao rolar.
+*/
+
+.reveal.hidden {
+  opacity: 0;
+
+  transform: translateY(50px);
+}
+
+/* ============================================================
+   41. SEÇÃO FREI PAULINO
+============================================================ */
+
+.currently-section {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 140px 8% 150px;
+
+  color: var(--branco);
+
+  background: linear-gradient(
+    135deg,
+    var(--verde-frei-dark),
+    var(--verde-frei)
+  );
+}
+
+.currently-background-text {
+  position: absolute;
+
+  right: -4%;
+  top: 50%;
+
+  transform: translateY(-50%) rotate(-90deg);
+
+  color: rgba(255, 255, 255, 0.035);
+
+  font-size: clamp(5rem, 14vw, 15rem);
+
+  font-weight: 700;
+
+  letter-spacing: 0.05em;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+/* ============================================================
+   42. CONTAINER ATUALMENTE
+============================================================ */
+
+.currently-container {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(1200px, 100%);
+
+  margin: 0 auto;
+}
+
+.currently-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ============================================================
+   43. TÍTULO ATUALMENTE
+============================================================ */
+
+.currently-title {
+  margin: 60px 0 80px;
+}
+
+.currently-title h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(4rem, 8vw, 8rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.currently-title p {
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+}
+
+/* ============================================================
+   44. CONTEÚDO ATUALMENTE
+============================================================ */
+
+.currently-main {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  gap: 70px;
+  align-items: center;
+}
+
+/* ============================================================
+   45. IMAGEM ATUAL
+============================================================ */
+
+.currently-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 25px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
+}
+
+.currently-image img {
+  height: 560px;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.currently-image:hover img {
+  transform: scale(1.04);
+}
+
+.image-overlay-text {
+  position: absolute;
+  left: 25px;
+  bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  color: var(--branco);
+}
+
+.image-overlay-text span {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+}
+
+.image-overlay-text strong {
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+/* ============================================================
+   46. TEXTO ATUALMENTE
+============================================================ */
+
+.currently-text {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 15px;
+}
+
+.currently-text p {
+  margin-bottom: 22px;
+}
+
+.currently-text strong {
+  color: var(--verde);
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.currently-text .currently-lead {
+  color: var(--branco);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.35;
+}
+
+/* ============================================================
+   38. FRASE DE PAUSA
+============================================================ */
+
+.timeline-break-top {
+  width: 100%;
+  padding: 30px 10%;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+}
+
+.break-line-top {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.timeline-break-top p {
+  max-width: 480px;
+  color: var(--branco);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.timeline-break-top strong {
+  color: var(--laranja);
+  font-weight: 500;
+}
+
+/* ============================================================
+   42. CONTAINER ATUALMENTE
+============================================================ */
+
+.currently-container {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(1200px, 100%);
+
+  margin: 0 auto;
+}
+
+.currently-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ============================================================
+   43. TÍTULO ATUALMENTE
+============================================================ */
+
+.currently-title {
+  margin: 60px 0 80px;
+}
+
+.currently-title h2 {
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(4rem, 8vw, 8rem);
+
+  font-weight: 400;
+
+  line-height: 0.9;
+
+  letter-spacing: -0.06em;
+}
+
+.currently-title p {
+  margin-top: 20px;
+
+  color: rgba(255, 255, 255, 0.7);
+
+  font-size: 18px;
+}
+
+/* ============================================================
+   44. CONTEÚDO ATUALMENTE
+============================================================ */
+
+.currently-main {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 70px;
+  align-items: center;
+}
+
+/* ============================================================
+   45. IMAGEM ATUAL
+============================================================ */
+
+.currently-image {
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 25px;
+
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
+}
+
+.currently-image img {
+  height: 560px;
+
+  object-fit: cover;
+
+  transition: transform 0.8s ease;
+}
+
+.currently-image:hover img {
+  transform: scale(1.04);
+}
+
+.image-overlay-text {
+  position: absolute;
+
+  left: 25px;
+  bottom: 25px;
+
+  display: flex;
+  flex-direction: column;
+
+  color: var(--branco);
+}
+
+.image-overlay-text span {
+  font-size: 10px;
+
+  letter-spacing: 0.2em;
+}
+
+.image-overlay-text strong {
+  font-family: "Playfair Display", serif;
+
+  font-size: 30px;
+
+  font-weight: 400;
+}
+
+/* ============================================================
+   46. TEXTO ATUALMENTE
+============================================================ */
+
+.currently-text {
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 15px;
+}
+
+.currently-text p {
+  margin-bottom: 22px;
+}
+
+.currently-text .currently-lead {
+  color: var(--branco);
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+
+  line-height: 1.35;
+}
+
+/* ============================================================
+   47. VALORES
+============================================================ */
+
+.currently-values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 100px;
+  margin-bottom: 10px;
+  padding-top: 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.value-item span {
+  color: var(--amarelo);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.value-item h3 {
+  margin: 15px 0 8px;
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.value-item p {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.value-item strong {
+  color: var(--verde);
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+/* ============================================================
+   48. FUTURO
+============================================================ */
+
+.future-section {
+  position: relative;
+  overflow: hidden;
+  padding: 150px 8%;
+  background: var(--branco);
+  text-align: center;
+}
+
+.future-container {
+  position: relative;
+  z-index: 2;
+  width: min(850px, 100%);
+  margin: 0 auto;
+}
+
+.future-container h2 {
+  margin-bottom: 30px;
+  color: var(--azul-claro);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(4rem, 8vw, 8rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.future-container h2 span {
+  display: block;
+  color: var(--laranja);
+  font-style: italic;
+  font-size: 0.62em;
+}
+
+.future-container > p {
+  max-width: 650px;
+  margin: 0 auto 18px;
+  color: var(--cinza);
+  font-size: 16px;
+}
+
+/* ============================================================
+   49. DECORAÇÃO DO FUTURO
+============================================================ */
+
+.future-decoration {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 650px;
+  height: 650px;
+
+  transform: translate(-50%, -50%);
+
+  border: 1px solid rgba(53, 107, 72, 0.07);
+
+  border-radius: 50%;
+}
+
+.future-decoration span {
+  position: absolute;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(53, 107, 72, 0.08);
+}
+
+.future-decoration span:nth-child(1) {
+  inset: 70px;
+}
+
+.future-decoration span:nth-child(2) {
+  inset: 140px;
+}
+
+.future-decoration span:nth-child(3) {
+  inset: 210px;
+}
+
+/* ============================================================
+   50. LINHA FINAL
+============================================================ */
+
+.future-line {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin: 60px auto 35px;
+
+  width: min(400px, 80%);
+}
+
+.future-line > span:first-child,
+.future-line > span:last-child {
+  flex: 1;
+
+  height: 1px;
+
+  background: var(--linha);
+}
+
+.future-dot {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: var(--laranja);
+}
+
+/* ============================================================
+   51. TEXTO FINAL
+============================================================ */
+
+.future-final-text {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  margin-bottom: 35px;
+}
+
+.future-final-text strong {
+  color: var(--verde-frei);
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 25px;
+
+  font-weight: 500;
+}
+
+.future-final-text span {
+  color: var(--cinza);
+
+  font-size: 13px;
+}
+
+/* ============================================================
+   52. BOTÃO FUTURO
+============================================================ */
+
+.future-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+  padding: 15px 22px 15px 25px;
+  border-radius: 50px;
+  color: var(--branco);
+  background: var(--verde-frei);
+  font-size: 13px;
+  font-weight: 600;
+  transition:
+    background var(--transicao),
+    transform var(--transicao),
+    box-shadow var(--transicao);
+  box-shadow: 0 8px 20px rgba(53, 107, 72, 0.15);
+}
+
+.future-button:hover {
+  background: var(--verde-frei-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(53, 107, 72, 0.22);
+}
+
+.button-arrow {
+  font-size: 20px;
+  line-height: 1;
+  transition: transform var(--transicao);
+}
+
+.future-button:hover .button-arrow {
+  transform: translateX(5px);
+}
+
+/* ============================================================
+   53. LEGADO — MEIO SÉCULO
+============================================================ */
+
+.legacy-section {
+  position: relative;
+  overflow: hidden;
+  padding: 150px 8%;
+  color: var(--branco);
+  background: var(--verde-frei-dark);
+}
+
+.legacy-background {
+  position: absolute;
+  right: -3%;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.legacy-background span {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(12rem, 25vw, 30rem);
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.025);
+  font-weight: 400;
+}
+
+.legacy-container {
+  position: relative;
+  z-index: 2;
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+.legacy-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 80px;
+}
+
+.legacy-title {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  font-family: "Playfair Display", serif;
+}
+
+.legacy-title span {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 22px;
+}
+
+.legacy-title strong {
+  color: var(--branco);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.legacy-intro {
+  width: min(800px, 100%);
+  margin-bottom: 80px;
+}
+
+.legacy-intro p {
+  margin-bottom: 22px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.legacy-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2px;
+  margin-bottom: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.legacy-card {
+  min-height: 280px;
+  padding: 45px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.4s ease,
+    background 0.4s ease;
+}
+
+.legacy-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.legacy-card-large {
+  grid-row: span 2;
+  min-height: 560px;
+}
+
+.legacy-card-number {
+  margin-bottom: 55px;
+  color: var(--amarelo);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.legacy-card-content span {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+}
+
+.legacy-card-content h3 {
+  max-width: 400px;
+  margin: 15px 0 20px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.legacy-card-content p {
+  max-width: 450px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.legacy-card-content strong {
+  color: var(--amarelo);
+  font-weight: 500;
+}
+
+/* ============================================================
+   54. HISTÓRIA FINAL
+============================================================ */
+
+.legacy-story {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 50px;
+  padding: 80px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.legacy-story-mark {
+  font-family: "Playfair Display", serif;
+  color: var(--laranja);
+  font-size: 120px;
+  line-height: 0.7;
+}
+
+.legacy-story-text {
+  max-width: 800px;
+}
+
+.legacy-story-text p {
+  margin-bottom: 25px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.legacy-story-text .legacy-lead {
+  color: var(--branco);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+}
+
+.legacy-story-text strong {
+  color: var(--amarelo);
+  font-weight: 500;
+}
+
+/* ============================================================
+   55. NÚMEROS FINAIS
+============================================================ */
+
+.legacy-numbers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding-top: 80px;
+}
+
+.legacy-numbers div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legacy-numbers strong {
+  color: var(--branco);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.legacy-numbers span {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   56. FINAL DA RETROSPECTIVA
+============================================================ */
+
+.retrospective-end {
+  position: relative;
+  overflow: hidden;
+  padding: 170px 8%;
+  background: var(--branco);
+  text-align: center;
+}
+
+.retrospective-end-background {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  pointer-events: none;
+}
+
+.retrospective-end-background span {
+  color: rgba(53, 107, 72, 0.035);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(7rem, 18vw, 18rem);
+  line-height: 1;
+}
+
+.retrospective-end-container {
+  position: relative;
+  z-index: 2;
+  width: min(900px, 100%);
+  margin: 0 auto;
+}
+
+.retrospective-end-container h2 {
+  margin: 45px 0 35px;
+  color: var(--azul-claro);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3.5rem, 7vw, 7rem);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+.retrospective-end-container h2 span {
+  display: block;
+  color: var(--laranja);
+  font-style: italic;
+}
+
+.retrospective-end-container > p {
+  max-width: 700px;
+  margin: 0 auto 18px;
+  color: var(--cinza);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.retrospective-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(400px, 80%);
+  margin: 65px auto 35px;
+}
+
+.retrospective-line span {
+  flex: 1;
+  height: 1px;
+  background: var(--linha);
+}
+
+.retrospective-line i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--laranja);
+}
+
+.retrospective-final {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.retrospective-final strong {
+  color: var(--verde-frei);
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.retrospective-final span {
+  color: var(--cinza);
+  font-size: 13px;
+}
+
+/* ============================================================
+   57. RESPONSIVIDADE
+============================================================ */
+
+@media (max-width: 850px) {
+  .legacy-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 35px;
+  }
+
+  .legacy-title {
+    text-align: left;
+  }
+
+  .legacy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .legacy-card-large {
+    grid-row: auto;
+    min-height: 350px;
+  }
+
+  .legacy-story {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .legacy-story-mark {
+    font-size: 80px;
+  }
+
+  .legacy-numbers {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .retrospective-end-background {
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 600px) {
+  .legacy-section,
+  .retrospective-end {
+    padding: 100px 7%;
+  }
+
+  .legacy-card {
+    padding: 30px;
+  }
+
+  .legacy-card-number {
+    margin-bottom: 35px;
+  }
+
+  .legacy-story {
+    padding: 60px 0;
+  }
+
+  .retrospective-end-container h2 {
+    font-size: clamp(3rem, 14vw, 5rem);
+  }
+
+  .retrospective-end-background span {
+    font-size: 7rem;
+  }
+}
+
+/* ============================================================
+   53. VOLTAR AO TOPO
+============================================================ */
+
+.back-to-top {
+  position: fixed;
+
+  right: 30px;
+  bottom: 30px;
+
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  color: var(--branco);
+
+  background: var(--laranja);
+
+  font-size: 20px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+
+  z-index: 900;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(10px);
+
+  transition:
+    opacity var(--transicao),
+    visibility var(--transicao),
+    transform var(--transicao),
+    background var(--transicao);
+}
+
+.back-to-top.show {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--verde-frei);
+
+  transform: translateY(-5px);
+}
+
+/* ============================================================
+   54. FOOTER
+============================================================ */
+
+.history-footer {
+  padding: 40px 8%;
+
+  color: var(--branco);
+
+  background: var(--azul);
+}
+
+.footer-container {
+  width: min(1200px, 100%);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 1fr auto 1fr;
+
+  gap: 40px;
+
+  align-items: center;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+}
+
+.footer-brand img {
+  width: 55px;
+  height: 55px;
+
+  object-fit: contain;
+}
+
+.footer-brand p {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.footer-links {
+  display: flex;
+
+  gap: 25px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.75);
+
+  font-size: 12px;
+
+  transition: color var(--transicao);
+}
+
+.footer-links a:hover {
+  color: var(--laranja);
+}
+
+.footer-copy {
+  text-align: right;
+}
+
+.footer-copy p {
+  color: rgba(255, 255, 255, 0.5);
+
+  font-size: 11px;
+}
+
+/* ============================================================
+   55. TABLET
+============================================================ */
+
+@media (max-width: 1000px) {
+  .main-nav {
+    gap: 25px;
+  }
+
+  .history-hero {
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+
+  .hero-info-bubble {
+    right: 7%;
+  }
+
+  .intro-container {
+    grid-template-columns: 60px 1fr;
+  }
+
+  .intro-side {
+    grid-column: 2;
+
+    padding-top: 0;
+  }
+
+  .currently-main {
+    gap: 45px;
+  }
+
+  .currently-image img {
+    height: 500px;
+  }
+}
+
+/* ============================================================
+   56. MOBILE — 900PX
+============================================================ */
+
+@media (max-width: 900px) {
+  /* HEADER */
+
+  .header-container {
+    width: calc(100% - 40px);
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .mobile-menu.active {
+    display: flex;
+  }
+
+  /* HERO */
+
+  .history-hero {
+    min-height: 850px;
+
+    padding: 130px 6% 90px;
+
+    align-items: center;
+  }
+
+  .hero-content {
+    width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(4rem, 12vw, 6rem);
+  }
+
+  .hero-info-bubble {
+    display: none;
+  }
+
+  .hero-side-word {
+    right: -20px;
+
+    opacity: 0.6;
+  }
+
+  /* INTRO */
+
+  .history-introduction {
+    padding: 90px 7%;
+  }
+
+  /* TIMELINE */
+
+  .timeline-section {
+    padding: 100px 5% 110px;
+  }
+
+  .timeline-heading {
+    margin-bottom: 80px;
+  }
+
+  .timeline-line {
+    left: 25px;
+  }
+
+  .timeline-item,
+  .timeline-right {
+    width: 100%;
+
+    margin-left: 0;
+
+    padding-left: 70px;
+    padding-right: 0;
+
+    text-align: left;
+  }
+
+  .timeline-left .timeline-dot,
+  .timeline-right .timeline-dot {
+    left: 14px;
+    right: auto;
+  }
+
+  .timeline-left .timeline-year,
+  .timeline-right .timeline-year {
+    position: relative;
+
+    left: auto;
+    right: auto;
+
+    margin-bottom: 10px;
+  }
+
+  .timeline-content {
+    padding: 30px;
+  }
+
+  .timeline-break {
+    padding: 50px 0;
+
+    flex-direction: column;
+  }
+
+  .break-line {
+    width: 100%;
+  }
+
+  /* ATUALMENTE */
+
+  .currently-section {
+    padding: 100px 7% 110px;
+  }
+
+  .currently-main {
+    grid-template-columns: 1fr;
+  }
+
+  .currently-image img {
+    height: 450px;
+  }
+
+  .currently-values {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+  }
+
+  /* FOOTER */
+
+  .footer-container {
+    grid-template-columns: 1fr;
+
+    text-align: center;
+  }
+
+  .footer-brand {
+    justify-content: center;
+  }
+
+  .footer-links {
+    justify-content: center;
+
+    flex-wrap: wrap;
+  }
+
+  .footer-copy {
+    text-align: center;
+  }
+}
+
+/* ============================================================
+   57. MOBILE — 600PX
+============================================================ */
+
+@media (max-width: 600px) {
+  /* HEADER */
+
+  .historia-header {
+    height: 74px;
+
+    padding: 0 20px;
+  }
+
+  .historia-header.scrolled {
+    height: 68px;
+  }
+
+  .header-container {
+    width: 100%;
+  }
+
+  .logo {
+    width: 64px;
+    height: 64px;
+  }
+
+  /* HERO */
+
+  .history-hero {
+    min-height: 780px;
+
+    padding: 120px 20px 80px;
+  }
+
+  .hero-small-label {
+    gap: 9px;
+
+    font-size: 9px;
+
+    letter-spacing: 0.1em;
+  }
+
+  .label-line {
+    width: 30px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(3.5rem, 17vw, 5rem);
+
+    line-height: 0.9;
+  }
+
+  .hero-content h1 span {
+    margin-top: 14px;
+
+    font-size: 0.55em;
+  }
+
+  .hero-description {
+    margin-top: 25px;
+
+    font-size: 15px;
+  }
+
+  .hero-scroll {
+    margin-top: 45px;
+  }
+
+  .hero-circle-one {
+    width: 420px;
+    height: 420px;
+
+    right: -250px;
+  }
+
+  .hero-circle-two {
+    width: 200px;
+    height: 200px;
+
+    right: -20px;
+  }
+
+  .hero-side-word {
+    display: none;
+  }
+
+  /* INTRO */
+
+  .history-introduction {
+    padding: 75px 20px;
+  }
+
+  .intro-container {
+    display: block;
+  }
+
+  .intro-number {
+    margin-bottom: 25px;
+  }
+
+  .intro-content h2 {
+    font-size: 2.7rem;
+  }
+
+  .intro-side {
+    margin-top: 45px;
+  }
+
+  /* TIMELINE */
+
+  .timeline-section {
+    padding: 80px 20px 90px;
+  }
+
+  .timeline-heading {
+    margin-bottom: 65px;
+  }
+
+  .timeline-heading h2 {
+    font-size: 3rem;
+  }
+
+  .timeline-heading p {
+    font-size: 14px;
+  }
+
+  .timeline-line {
+    left: 14px;
+  }
+
+  .timeline-item,
+  .timeline-right {
+    padding-left: 45px;
+
+    padding-bottom: 80px;
+  }
+
+  .timeline-left .timeline-dot,
+  .timeline-right .timeline-dot {
+    left: 3px;
+  }
+
+  .timeline-dot {
+    width: 22px;
+    height: 22px;
+  }
+
+  .timeline-content {
+    padding: 24px;
+
+    border-radius: 18px;
+  }
+
+  .timeline-year {
+    font-size: 3.5rem;
+  }
+
+  .timeline-content h3 {
+    font-size: 2rem;
+  }
+
+  .timeline-content p {
+    font-size: 14px;
+  }
+
+  .timeline-image img {
+    height: 220px;
+  }
+
+  .timeline-image-wide img {
+    height: 250px;
+  }
+
+  .timeline-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-gallery img,
+  .timeline-gallery .gallery-small img {
+    height: 220px;
+  }
+
+  /* ATUALMENTE */
+
+  .currently-section {
+    padding: 85px 20px 95px;
+  }
+
+  .currently-title {
+    margin: 45px 0 55px;
+  }
+
+  .currently-title h2 {
+    font-size: 4.5rem;
+  }
+
+  .currently-title p {
+    font-size: 15px;
+  }
+
+  .currently-image img {
+    height: 360px;
+  }
+
+  .currently-text .currently-lead {
+    font-size: 1.5rem;
+  }
+
+  .currently-values {
+    margin-top: 65px;
+
+    padding-top: 35px;
+  }
+
+  /* FUTURO */
+
+  .future-section {
+    padding: 100px 20px;
+  }
+
+  .future-container h2 {
+    font-size: 4.5rem;
+  }
+
+  .future-container > p {
+    font-size: 14px;
+  }
+
+  .future-decoration {
+    width: 450px;
+    height: 450px;
+  }
+
+  /* BOTÃO TOPO */
+
+  .back-to-top {
+    right: 20px;
+    bottom: 20px;
+
+    width: 48px;
+    height: 48px;
+  }
+
+  /* FOOTER */
+
+  .history-footer {
+    padding: 35px 20px;
+  }
+
+  .footer-links {
+    gap: 15px;
+  }
+}
+
+/* ============================================================
+   58. CELULARES PEQUENOS
+============================================================ */
+
+@media (max-width: 400px) {
+  .hero-content h1 {
+    font-size: 3.1rem;
+  }
+
+  .intro-content h2 {
+    font-size: 2.3rem;
+  }
+
+  .timeline-heading h2 {
+    font-size: 2.5rem;
+  }
+
+  .currently-title h2 {
+    font-size: 3.8rem;
+  }
+
+  .future-container h2 {
+    font-size: 3.8rem;
+  }
+}
