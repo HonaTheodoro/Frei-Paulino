@@ -1,102 +1,372 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Blog</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <!-- Modal de Login Admin -->
-    <div id="adminModal" class="admin-modal">
-        <div class="admin-modal-content">
-            <span class="close-btn" id="closeModal">&times;</span>
-            <h2><i class="fas fa-lock"></i> Área Admin</h2>
-            <input type="password" id="adminPassword" placeholder="Digite a senha admin">
-            <button id="loginBtn">Entrar</button>
-            <div id="loginError" class="error"></div>
-        </div>
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Header -->
-    <header id="header">
-        <div class="header-content">
-            <h1 id="blogTitle">Meu Blog</h1>
-            <button id="adminBtn" class="admin-btn">
-                <i class="fas fa-cog"></i> Admin
-            </button>
-        </div>
+    <title>Centro Vocacional Frei Paulino</title>
+
+    <link rel="icon" href="Imagens/Logo.png" />
+
+    <!-- =========================================================
+       FONTES
+  ========================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- =========================================================
+       FONT AWESOME
+  ========================================================== -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- =========================================================
+       CSS
+  ========================================================== -->
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- =========================================================
+       HEADER / NAVEGAÇÃO
+  ========================================================== -->
+
+    <header class="historia-header" id="topo">
+      <div class="header-container">
+        <!-- LOGO -->
+
+        <a
+          href="index.php"
+          class="logo-link"
+          aria-label="Voltar para a página inicial"
+        >
+          <img
+            src="Imagens/Logo.png"
+            alt="Centro Vocacional Frei Paulino"
+            class="logo"
+          />
+        </a>
+
+        <!-- =====================================================
+           MENU DESKTOP
+      ====================================================== -->
+
+        <nav class="main-nav" aria-label="Navegação principal">
+          <a href="index.php" class="active"> Início </a>
+
+          <a href="historia.php"> Nossa História </a>
+
+          <a href="blog.php"> Blog </a>
+
+          <a href="contato.php"> Contato </a>
+
+          <a href="aprendiz.php" class="nav-highlight"> Área do Aprendiz </a>
+        </nav>
+
+        <!-- =====================================================
+           BOTÃO MENU MOBILE
+      ====================================================== -->
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- =======================================================
+         MENU MOBILE
+    ======================================================== -->
+
+      <nav class="mobile-menu" id="mobileMenu" aria-label="Navegação mobile">
+        <a href="index.php" class="active"> Início </a>
+
+        <a href="historia.php"> Nossa História </a>
+
+        <a href="blog.php"> Blog </a>
+
+        <a href="contato.php"> Contato </a>
+
+        <a href="aprendiz.php"> Área do Aprendiz </a>
+      </nav>
     </header>
 
-    <!-- Container Principal -->
-    <main class="container">
-        <!-- Editor Admin (escondido por padrão) -->
-        <div id="adminPanel" class="admin-panel hidden">
-            <div class="admin-header">
-                <h2><i class="fas fa-edit"></i> Painel Admin</h2>
-                <button id="logoutBtn" class="btn-secondary">
-                    <i class="fas fa-sign-out-alt"></i> Sair
-                </button>
+    <!-- =========================================================
+       CONTEÚDO PRINCIPAL
+  ========================================================== -->
+
+    <main>
+      <!-- =======================================================
+         HERO / APRESENTAÇÃO PRINCIPAL
+    ======================================================== -->
+
+      <section class="hero">
+        <!-- ELEMENTOS DECORATIVOS -->
+
+        <div class="hero-grid" aria-hidden="true"></div>
+
+        <div class="hero-circle hero-circle-one" aria-hidden="true"></div>
+
+        <div class="hero-circle hero-circle-two" aria-hidden="true"></div>
+
+        <!-- CONTEÚDO -->
+
+        <div class="hero-content">
+          <!-- =================================================
+             LADO ESQUERDO
+        ================================================== -->
+
+          <div class="hero-left">
+            <div class="hero-small-label">
+              <span class="label-line"></span>
+
+              <span> CENTRO VOCACIONAL FREI PAULINO </span>
             </div>
 
-            <!-- Configurações do Blog -->
-            <div class="admin-section">
-                <h3><i class="fas fa-palette"></i> Configurações do Blog</h3>
-                <div class="config-grid">
-                    <div class="config-item">
-                        <label>Título do Blog:</label>
-                        <input type="text" id="blogTitleInput" placeholder="Meu Blog">
-                    </div>
-                    <div class="config-item">
-                        <label>Cor Principal:</label>
-                        <input type="color" id="primaryColor" value="#3498db">
-                    </div>
-                    <div class="config-item">
-                        <label>Cor de Fundo:</label>
-                        <input type="color" id="bgColor" value="#f8f9fa">
-                    </div>
-                </div>
-                <button id="saveConfigBtn" class="btn-primary">
-                    <i class="fas fa-save"></i> Salvar Configurações
-                </button>
-            </div>
+            <h1>
+              Centro Vocacional
+              <span>Frei Paulino</span>
+            </h1>
 
-            <!-- Criar Novo Post -->
-            <div class="admin-section">
-                <h3><i class="fas fa-plus"></i> Novo Post</h3>
-                <textarea id="postContent" placeholder="Escreva seu post aqui... Suporta HTML, Markdown e formatação rica!"></textarea>
-                
-                <!-- Editor de Fotos -->
-                <div class="photo-editor">
-                    <h4><i class="fas fa-images"></i> Fotos (máx 10)</h4>
-                    <div id="photoInputs" class="photo-inputs">
-                        <input type="file" id="photo1" accept="image/*" multiple>
-                    </div>
-                    <button id="addPhotoBtn" class="btn-secondary">
-                        <i class="fas fa-plus"></i> + Foto
-                    </button>
-                </div>
-                
-                <button id="publishBtn" class="btn-primary">
-                    <i class="fas fa-paper-plane"></i> Publicar Post
-                </button>
-            </div>
+            <p>Serviço de Convivência e Fortalecimento de Vínculos</p>
 
-            <!-- Lista de Posts -->
-            <div class="admin-section">
-                <h3><i class="fas fa-list"></i> Meus Posts</h3>
-                <div id="postsList" class="posts-list"></div>
+            <div class="hero-buttons">
+              <a href="historia.php" class="btn btn-primary">
+                Conheça nossa História
+              </a>
+
+              <a href="blog.php" class="btn btn-secondary"> Ir para o Blog </a>
             </div>
+          </div>
+
+          <!-- =================================================
+             LADO DIREITO
+        ================================================== -->
+
+          <div class="hero-right">
+            <div class="hero-image">
+              <!--
+              Área reservada para a imagem principal.
+              Você pode colocar a imagem aqui posteriormente.
+            --></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+         APRESENTAÇÃO
+    ======================================================== -->
+
+      <section class="apresentacao" id="sobre">
+        <!-- LADO ESQUERDO -->
+
+        <div class="lado-esquerdo">
+          <h2>Transformações através da convivência e do aprendizado.</h2>
+
+          <p>Criando oportunidades para o futuro.</p>
+
+          <a href="historia.php" class="btn btn-primary"> Saiba Mais </a>
         </div>
 
-        <!-- Feed Público -->
-        <div id="publicFeed" class="public-feed">
-            <div id="postsFeed"></div>
+        <!-- IMAGEM CENTRAL -->
+
+        <div
+          class="imagem-centro"
+          aria-label="Imagem ilustrativa do Centro Vocacional Frei Paulino"
+        >
+          <!-- Imagem central -->
         </div>
+
+        <!-- LADO DIREITO -->
+
+        <div class="lado-direito">
+          <h2>Faça parte da nossa história!</h2>
+
+          <p>
+            Conecte-se ao mercado de trabalho e conheça nossas oportunidades.
+          </p>
+
+          <a href="aprendiz.php" class="btn btn-primary"> Área do Aprendiz </a>
+        </div>
+      </section>
+
+      <!-- =======================================================
+         BLOG / ÚLTIMAS NOTÍCIAS
+    ======================================================== -->
+
+      <section id="blog" aria-labelledby="titulo-blog">
+        <div class="blog-container">
+          <h2 id="titulo-blog">Últimas Notícias</h2>
+
+          <!--
+          As notícias/posts podem ser carregados
+          dinamicamente pelo JavaScript/PHP.
+        -->
+
+          <div id="postsFeed"></div>
+        </div>
+      </section>
     </main>
 
-    <script src="script.js"></script>
-</body>
+    <!-- =========================================================
+       RODAPÉ
+  ========================================================== -->
+
+    <footer>
+      <div class="footer-container">
+        <!-- =====================================================
+           LOGO / DESCRIÇÃO
+      ====================================================== -->
+
+        <div class="footer-logo">
+          <img src="Imagens/Logo.png" alt="Centro Vocacional Frei Paulino" />
+
+          <h3>Centro Vocacional Frei Paulino</h3>
+
+          <p>
+            Transformando vidas através da educação, convivência e
+            fortalecimento de vínculos.
+          </p>
+        </div>
+
+        <!-- =====================================================
+           LINKS
+      ====================================================== -->
+
+        <div class="footer-links">
+          <h4>Navegação</h4>
+
+          <a href="index.php"> Início </a>
+
+          <a href="historia.php"> História </a>
+
+          <a href="blog.php"> Blog </a>
+
+          <a href="contato.php"> Contato </a>
+
+          <a href="aprendiz.php"> Área do Aprendiz </a>
+        </div>
+
+        <!-- =====================================================
+           CONTATO
+      ====================================================== -->
+
+        <div class="footer-contact">
+          <h4>Contato</h4>
+
+          <p>
+            <i class="fas fa-phone" aria-hidden="true"></i>
+            <span>(18) 0000-0000</span>
+          </p>
+
+          <p>
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+            <span>contato@cvfp.org.br</span>
+          </p>
+
+          <p>
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <span>Cândido Mota - SP</span>
+          </p>
+        </div>
+
+        <!-- =====================================================
+           REDES SOCIAIS
+      ====================================================== -->
+
+        <div class="footer-social">
+          <h4>Redes Sociais</h4>
+
+          <a href="#" aria-label="Facebook">
+            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+          </a>
+
+          <a href="#" aria-label="Instagram">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+          </a>
+
+          <a href="#" aria-label="YouTube">
+            <i class="fab fa-youtube" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- =====================================================
+         COPYRIGHT
+    ====================================================== -->
+
+      <div class="footer-bottom">
+        © 2026 Centro Vocacional Frei Paulino. Todos os direitos reservados.
+      </div>
+    </footer>
+
+    <!-- =========================================================
+       BOTÃO VOLTAR AO TOPO
+  ========================================================== -->
+
+    <button id="backToTop" type="button" aria-label="Voltar ao topo">
+      <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- =========================================================
+       MODAL ADMINISTRATIVO
+  ========================================================== -->
+
+    <div id="adminModal" class="admin-modal" aria-hidden="true">
+      <div class="admin-modal-content">
+        <button
+          class="close-btn"
+          id="closeModal"
+          type="button"
+          aria-label="Fechar"
+        >
+          &times;
+        </button>
+
+        <h2>Área Administrativa</h2>
+
+        <input
+          type="password"
+          id="adminPassword"
+          placeholder="Digite a senha"
+          autocomplete="current-password"
+        />
+
+        <button id="loginBtn" type="button">Entrar</button>
+
+        <div id="loginError" class="error" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <!-- =========================================================
+       LOADING
+  ========================================================== -->
+
+    <div class="loading-screen" aria-hidden="true">
+      <div class="loader"></div>
+    </div>
+
+    <!-- =========================================================
+       JAVASCRIPT
+  ========================================================== -->
+
+    <script src="js/script.js"></script>
+  </body>
 </html>

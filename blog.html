@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Blog | Centro Vocacional Frei Paulino</title>
+
+    <link rel="icon" href="Imagens/Logo.png" />
+
+    <!-- BOXICONS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/blog.css" />
+  </head>
+
+  <body>
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+      <nav class="navbar">
+        <a href="index.php" class="logo">
+          <img src="Imagens/Logo.png" alt="Logo" />
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="index.php">Início</a></li>
+          <li><a href="historia.php">História</a></li>
+          <li><a href="blog.php" class="active">Blog</a></li>
+          <li><a href="aprendiz.php">Área do Aprendiz</a></li>
+        </ul>
+
+        <div class="nav-buttons">
+          <button id="adminBtn" class="admin-btn">
+            <i class="fas fa-cog"></i>
+          </button>
+        </div>
+        <div class="menu-mobile">
+          <i class="bx bx-menu"></i>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ================= MENU MOBILE ================= -->
+
+    <div class="mobile-menu">
+      <i class="bx bx-x close-mobile"></i>
+      <a href="index.php">Início</a>
+      <a href="historia.php">História</a>
+      <a href="blog.php">Blog</a>
+      <a href="aprendiz.php">Área do Aprendiz</a>
+    </div>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero-blog">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Notícias, Eventos e Projetos</h1>
+        <p>
+          Acompanhe tudo o que acontece no Centro Vocacional Frei Paulino.
+          Eventos, oficinas, cursos, jovens aprendizes, parcerias e muito mais.
+        </p>
+        <a href="#noticias" class="btn-primary"> Ver Notícias </a>
+      </div>
+    </section>
+
+    <!-- ================= PESQUISA ================= -->
+
+    <section class="search-section">
+      <h2>Pesquisar Notícias</h2>
+      <div class="search-box">
+        <input
+          type="text"
+          id="searchNews"
+          placeholder="Digite uma palavra..."
+        />
+        <button>
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= CATEGORIAS ================= -->
+
+    <section class="categorias">
+      <button class="categoria active">Todos</button>
+      <button class="categoria">Eventos</button>
+      <button class="categoria">Cursos</button>
+      <button class="categoria">Jovem Aprendiz</button>
+      <button class="categoria">Comunicados</button>
+      <button class="categoria">Parcerias</button>
+    </section>
+
+    <!-- ================= DESTAQUE ================= -->
+
+    <section class="featured-post">
+      <div class="featured-image">
+        <!-- FOTO AQUI -->
+      </div>
+      <div class="featured-content">
+        <span> ⭐ Destaque da Semana </span>
+        <h2>Título da notícia principal</h2>
+        <p>
+          Aqui ficará um pequeno resumo da notícia. Essa notícia aparecerá
+          sempre em destaque na parte superior do blog.
+        </p>
+        <div class="featured-info">
+          <span>
+            <i class="far fa-calendar"></i>
+            24 Julho 2026
+          </span>
+          <span>
+            <i class="far fa-user"></i>
+            Administração
+          </span>
+        </div>
+        <a href="post.php" class="btn-primary"> Ler notícia completa </a>
+      </div>
+    </section>
+
+    <!-- ================= NOTÍCIAS ================= -->
+
+    <section id="noticias" class="posts">
+      <h2>Últimas Notícias</h2>
+      <div id="posts-grid"></div>
+    </section>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+      <!-- EVENTOS -->
+      <div class="sidebar-card">
+        <h3>Próximos Eventos</h3>
+        <ul>
+          <li>📅 Oficina de Informática</li>
+          <li>📅 Encontro de Aprendizes</li>
+          <li>📅 Festa da Família</li>
+          <li>📅 Formatura</li>
+        </ul>
+      </div>
+
+      <!-- POPULARES -->
+      <div class="sidebar-card">
+        <h3>Notícias Populares</h3>
+        <ul>
+          <li>Jovens conquistam vagas de emprego</li>
+          <li>Curso de Tecnologia inicia nova turma</li>
+          <li>Projeto Social recebe premiação</li>
+          <li>Empresa firma parceria com o Centro</li>
+        </ul>
+      </div>
+
+      <!-- REDES -->
+      <div class="sidebar-card">
+        <h3>Redes Sociais</h3>
+        <div class="socials">
+          <a href="#"> <i class="fab fa-instagram"></i> </a>
+          <a href="#"> <i class="fab fa-facebook"></i> </a>
+          <a href="#"> <i class="fab fa-youtube"></i> </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ================= NEWSLETTER ================= -->
+
+    <section class="newsletter">
+      <div class="newsletter-container">
+        <div class="newsletter-text">
+          <span>📬 Fique por dentro!</span>
+          <h2>Receba nossas novidades</h2>
+          <p>
+            Cadastre seu e-mail e acompanhe eventos, cursos, comunicados e
+            notícias do Centro Vocacional Frei Paulino.
+          </p>
+        </div>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Digite seu e-mail" />
+          <button type="submit">Inscrever-se</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= FAÇA PARTE ================= -->
+
+    <section class="join-us">
+      <div class="join-content">
+        <h2>Faça parte dessa história!</h2>
+        <p>
+          O Centro Vocacional Frei Paulino transforma vidas por meio da
+          educação, convivência, qualificação profissional e inclusão social.
+          Venha conhecer nossos projetos.
+        </p>
+        <div class="join-buttons">
+          <a href="aprendiz.php" class="btn-primary"> Área do Aprendiz </a>
+          <a href="contato.php" class="btn-secondary"> Entre em Contato </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= RODAPÉ ================= -->
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="Imagens/Logo.png" />
+          <h3>Centro Vocacional Frei Paulino</h3>
+          <p>
+            Transformando vidas através da educação, convivência e
+            fortalecimento de vínculos.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navegação</h4>
+          <a href="index.php"> Início </a>
+          <a href="historia.php"> História </a>
+          <a href="blog.php"> Blog </a>
+          <a href="aprendiz.php"> Área do Aprendiz </a>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contato</h4>
+          <p>
+            <i class="fas fa-phone"></i>
+            (18) 0000-0000
+          </p>
+          <p>
+            <i class="fas fa-envelope"></i>
+            contato@cvfp.org.br
+          </p>
+          <p>
+            <i class="fas fa-map-marker-alt"></i>
+            Cândido Mota - SP
+          </p>
+        </div>
+
+        <div class="footer-social">
+          <h4>Redes Sociais</h4>
+          <a href="#">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2026 Centro Vocacional Frei Paulino. Todos os direitos reservados.
+      </div>
+    </footer>
+
+    <!-- ================= BOTÃO TOPO ================= -->
+
+    <button id="backToTop">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ================= MODAL ADMIN ================= -->
+
+    <div id="adminModal" class="admin-modal">
+      <div class="admin-modal-content">
+        <span class="close-btn" id="closeModal"> &times; </span>
+        <h2>Área Administrativa</h2>
+        <input
+          type="password"
+          id="adminPassword"
+          placeholder="Digite a senha"
+        />
+        <button id="loginBtn">Entrar</button>
+        <div id="loginError"></div>
+      </div>
+    </div>
+
+    <!-- ================= LOADING ================= -->
+
+    <div class="loading-screen">
+      <div class="loader"></div>
+    </div>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script src="js/blog.js"></script>
+  </body>
+</html>

@@ -1,0 +1,388 @@
+<?php
+
+require_once "config/auth.php";
+require_once "config/conexao.php";
+
+$nomeAdministrador = $_SESSION["nome"];
+
+?>
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel Administrativo | Centro Vocacional Frei Paulino</title>
+    <link rel="icon" href="Imagens/Logo.png" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="admin-container">
+      <!-- ========================================================= -->
+      <!-- SIDEBAR -->
+      <!-- ========================================================= -->
+      <aside class="sidebar">
+        <div class="logo">
+          <img src="Imagens/Logo.png" />
+          <h2>CVFP</h2>
+        </div>
+
+        <ul class="menu">
+          <li class="active" data-page="inicio">
+            <i class="fas fa-house"></i>
+
+            <span>Início</span>
+          </li>
+
+          <li data-page="blog">
+            <i class="fas fa-newspaper"></i>
+
+            <span>Blog</span>
+          </li>
+
+          <li data-page="configuracoes">
+            <i class="fas fa-gear"></i>
+
+            <span>Configurações</span>
+          </li>
+        </ul>
+
+        <a href="logout.php" class="btnLogout">
+          <i class="bx bx-log-out"></i>
+
+          Sair
+        </a>
+      </aside>
+
+      <!-- ========================================================= -->
+      <!-- CONTEÚDO -->
+      <!-- ========================================================= -->
+
+      <main class="content">
+        <!-- ========================================================= -->
+        <!-- TOPO -->
+        <!-- ========================================================= -->
+
+        <header class="topbar">
+          <div>
+            <h1>Painel Administrativo</h1>
+
+            <p>Centro Vocacional Frei Paulino</p>
+          </div>
+
+          <div class="perfil">
+            <img src="Imagens/admin.png" alt="Administrador" />
+
+            <div>
+              <h3><?= htmlspecialchars($nomeAdministrador) ?></h3>
+
+              <span><?= htmlspecialchars($_SESSION["nivel"]) ?></span>
+            </div>
+          </div>
+        </header>
+
+        <!-- ========================================================= -->
+        <!-- INÍCIO -->
+        <!-- ========================================================= -->
+
+        <section id="inicio" class="page active-page">
+          <h2>Bem-vindo!</h2>
+
+          <p>
+            Gerencie todo o sistema do Centro Vocacional através deste painel.
+          </p>
+
+          <?php $totalPosts = $pdo->query("SELECT COUNT(*) FROM
+          posts")->fetchColumn(); ?>
+
+          <div class="cards">
+            <div class="card">
+              <h2><?= $totalPosts ?></h2>
+
+              <p>Posts</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- BLOG -->
+        <!-- ========================================================= -->
+
+        <section id="blog" class="page">
+          <div class="page-header">
+            <h2>Publicações</h2>
+
+            <button id="novoPost">
+              <i class="fas fa-plus"></i>
+
+              Nova Publicação
+            </button>
+          </div>
+
+          <div id="listaPosts">
+            <!-- Posts cadastrados -->
+          </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- CONFIGURAÇÕES -->
+        <!-- ========================================================= -->
+
+        <section id="configuracoes" class="page">
+          <h2>Configurações do Sistema</h2>
+
+          <div class="config-grid">
+            <div class="config-card">
+              <h3>Informações do Centro</h3>
+
+              <label>Nome</label>
+
+              <input type="text" placeholder="Centro Vocacional Frei Paulino" />
+
+              <label>Telefone</label>
+
+              <input type="text" placeholder="(18) 99999-9999" />
+
+              <label>Email</label>
+
+              <input type="email" placeholder="contato@cvfp.com" />
+
+              <label>Endereço</label>
+
+              <textarea></textarea>
+            </div>
+
+            <div class="config-card">
+              <h3>Redes Sociais</h3>
+
+              <label>Instagram</label>
+
+              <input type="text" />
+
+              <label>Facebook</label>
+
+              <input type="text" />
+
+              <label>Youtube</label>
+
+              <input type="text" />
+
+              <button class="btnSalvar">Salvar Alterações</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- MODAL NOVO APRENDIZ -->
+        <!-- ========================================================= -->
+
+        <div id="modalAprendiz" class="modal">
+          <div class="modal-content">
+            <span class="closeModal"> &times; </span>
+
+            <h2>Cadastro de Aprendiz</h2>
+
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="dados">Dados</button>
+
+              <button class="tab-btn" data-tab="documentos">Documentos</button>
+
+              <button class="tab-btn" data-tab="historico">Histórico</button>
+
+              <button class="tab-btn" data-tab="pendencias">Pendências</button>
+            </div>
+            <div class="tab-content active" id="dados">
+              <div class="form-grid">
+                <div class="campo">
+                  <label>Foto</label>
+
+                  <input type="file" id="fotoAprendiz" accept="image/*" />
+                </div>
+
+                <div class="campo">
+                  <label>Nome Completo</label>
+
+                  <input type="text" id="nomeAprendiz" />
+                </div>
+
+                <div class="campo">
+                  <label>CPF</label>
+
+                  <input type="text" id="cpfAprendiz" />
+                </div>
+
+                <div class="campo">
+                  <label>RG</label>
+
+                  <input type="text" id="rgAprendiz" />
+                </div>
+
+                <div class="campo">
+                  <label>Telefone</label>
+
+                  <input type="text" id="telefoneAprendiz" />
+                </div>
+
+                <div class="campo">
+                  <label>E-mail</label>
+
+                  <input type="email" id="emailAprendiz" />
+                </div>
+
+                <div class="campo">
+                  <label>Endereço</label>
+
+                  <input type="text" id="enderecoAprendiz" />
+                </div>
+
+                <div class="campo">
+                  <label>Curso</label>
+
+                  <input type="text" id="cursoAprendiz" />
+                </div>
+
+                <div class="campo">
+                  <label>Empresa</label>
+
+                  <input type="text" id="empresaAprendiz" />
+                </div>
+
+                <div class="campo">
+                  <label>Supervisor</label>
+
+                  <input type="text" id="supervisorAprendiz" />
+                </div>
+
+                <div class="campo">
+                  <label>Início do Contrato</label>
+
+                  <input type="date" id="inicioContrato" />
+                </div>
+
+                <div class="campo">
+                  <label>Fim do Contrato</label>
+
+                  <input type="date" id="fimContrato" />
+                </div>
+
+                <div class="campo">
+                  <label>Status</label>
+
+                  <select id="statusAprendiz">
+                    <option>Ativo</option>
+
+                    <option>Concluído</option>
+
+                    <option>Encerrado</option>
+
+                    <option>Desligado</option>
+                  </select>
+                </div>
+              </div>
+
+              <label> Observações </label>
+
+              <textarea id="observacoesAprendiz" rows="6"></textarea>
+            </div>
+
+            <div class="tab-content" id="documentos">
+              <h3>Documentos do Aprendiz</h3>
+
+              <div class="upload-box">
+                <label> RG </label>
+
+                <input type="file" id="rgArquivo" />
+
+                <label> CPF </label>
+
+                <input type="file" id="cpfArquivo" />
+
+                <label> Contrato </label>
+
+                <input type="file" id="contratoArquivo" />
+
+                <label> Comprovante de Matrícula </label>
+
+                <input type="file" id="matriculaArquivo" />
+
+                <label> Outros Arquivos </label>
+
+                <input type="file" multiple id="outrosArquivos" />
+              </div>
+
+              <div id="listaArquivos"></div>
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- HISTÓRICO -->
+            <!-- ========================================================= -->
+
+            <div class="tab-content" id="historico">
+              <h3>Histórico</h3>
+
+              <div class="historico-form">
+                <input type="date" id="dataHistorico" />
+
+                <input type="text" id="tituloHistorico" placeholder="Título" />
+
+                <textarea
+                  id="descricaoHistorico"
+                  placeholder="Descrição"
+                ></textarea>
+
+                <button id="novoHistorico">Adicionar</button>
+              </div>
+
+              <div id="timelineHistorico"></div>
+            </div>
+
+            <div class="tab-content" id="pendencias">
+              <h3>Pendências</h3>
+
+              <div class="pendencia-form">
+                <input
+                  type="text"
+                  id="tituloPendencia"
+                  placeholder="Nova pendência"
+                />
+
+                <select id="tipoPendencia">
+                  <option>Documentação</option>
+
+                  <option>Empresa</option>
+
+                  <option>Curso</option>
+
+                  <option>Financeiro</option>
+
+                  <option>Outros</option>
+                </select>
+
+                <button id="adicionarPendencia">Adicionar</button>
+              </div>
+
+              <div id="listaPendencias">
+                <!-- Pendências aparecem aqui -->
+              </div>
+            </div>
+
+            <div class="modal-buttons">
+              <button id="salvarAprendiz" class="btnSalvar">Salvar</button>
+
+              <button class="btnCancelar">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
